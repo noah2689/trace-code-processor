@@ -89,3 +89,7 @@ Small Tool/
 
 - v1.0.0: 初始版本，基础功能完成
 - v1.0.1: 添加存储路径持久化功能
+- v1.0.2: 修复跨平台兼容性问题
+  - 修复 DPI 设置顺序问题
+  - 修复 Windows 打开文件夹命令 (open -> os.startfile)
+  - 添加 macOS/Windows 双平台支持

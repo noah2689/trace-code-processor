@@ -165,7 +165,15 @@ class TraceCodeProcessor(QMainWindow):
         for code in raw_codes:
             cleaned = code.strip()
             if cleaned:
-                trace_codes.append(cleaned)
+                # 检测并拆分粘连的追溯码（40位数字 = 两个20位追溯码粘在一起）
+                if len(cleaned) == 40 and cleaned.isdigit():
+                    # 拆分为两个追溯码
+                    code1 = cleaned[:20]
+                    code2 = cleaned[20:]
+                    trace_codes.append(code1)
+                    trace_codes.append(code2)
+                else:
+                    trace_codes.append(cleaned)
 
         if not trace_codes:
             QMessageBox.warning(self, "警告", "没有有效的追溯码！")
